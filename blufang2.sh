@@ -4,7 +4,7 @@ scriptVersion=2.0
 # Used Device
 TTY=/dev/ttyACM0
 # Target electronic wallet value
-EUR=20
+EUR=80
 
 
 showHelp()
@@ -44,8 +44,11 @@ update()
 
     echo -e "\e[5m\e[33m++\e[0m\e[39m\e[96minstalling Requiered Software\e[39m"
     	sudo apt upgrade -y
-	sudo apt install p7zip git build-essential libreadline5 libreadline-dev libusb-0.1-4 libusb-dev libqt4* perl pkg-config wget libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib libpcsclite-dev pcscd -y
-
+	sudo apt install p7zip git build-essential libreadline5 libreadline-dev libusb-0.1-4 libusb-dev libqt4* perl pkg-config wget libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib libpcsclite-dev pcscd libbz2-dev libclang-dev libssl-dev -y
+	sudo apt remove modemmanager -y
+	sudo cp -rf driver/77-mm-usb-device-blacklist.rules /etc/udev/rules.d/77-mm-usb-device-blacklist.rules
+	sudo udevadm control --reload-rules
+	sudo adduser $USER dialout
     echo -e "\e[5m\e[33m++\e[0m\e[39m\e[96mCloning git\e[39m"
     git clone https://github.com/RfidResearchGroup/proxmark3/
     echo -e "\e[5m\e[33m++\e[0m\e[39m\e[96mintegrating Custom Scripts\e[39m"
