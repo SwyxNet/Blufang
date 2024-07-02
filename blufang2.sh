@@ -44,7 +44,7 @@ update()
 
     echo -e "\e[5m\e[33m++\e[0m\e[39m\e[96minstalling Requiered Software\e[39m"
     	sudo apt upgrade -y
-	sudo apt install p7zip lz4 git build-essential libreadline-dev libusb-0.1-4 libusb-dev perl pkg-config wget libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib libpcsclite-dev pcscd libbz2-dev libclang-dev libssl-dev -y
+	sudo apt install p7zip liblz4-dev git build-essential libreadline-dev libusb-0.1-4 libusb-dev perl pkg-config wget libncurses5-dev gcc-arm-none-eabi libstdc++-arm-none-eabi-newlib libpcsclite-dev pcscd libbz2-dev libclang-dev libssl-dev -y
 	sudo apt remove modemmanager -y
 	sudo cp -rf driver/77-mm-usb-device-blacklist.rules /etc/udev/rules.d/77-mm-usb-device-blacklist.rules
 	sudo udevadm control --reload-rules
