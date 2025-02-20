@@ -1,6 +1,6 @@
 #!/bin/bash
 # Script version
-scriptVersion=2.0
+scriptVersion=2.1
 # Used Device
 TTY=/dev/ttyACM0
 # Target electronic wallet value
@@ -149,7 +149,7 @@ echo "#BlueFang by Swyx" > log.txt
 
 echo -e "\e[0m\e[39m\e[96m [ \e[5m\e[33mWorking\e[0m\e[39m\e[96m ] It can take some time, try to move the key on the antenna\e[39m"
 
-until grep Successfully log.txt
+until grep ok log.txt
 do
 	$PWD/proxmark3/client/proxmark3 $TTY -c "lf em 4x50 wrbl -b 5 -d $LSB" >> log.txt
 done
